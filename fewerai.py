@@ -1,8 +1,14 @@
 import requests
 
-def send_request(username, password, user_request):
-    # Formatage des données dans le format spécifié
-    data = "{}%{}%{}".format(username, password, user_request)
+class API(object):
+    def __init__(self, username:str, token:str):
+        self.username = username
+        self.token = token
+        
+    def generate(self, request:str):
+        """Uses the FewerAI API to generate a text"""
+        # Formatage des données dans le format spécifié
+    data = "{}%{}%{}".format(self.username, self.token, request)
     
     # URL de l'API Flask
     url = "http://n1.recloud-hosting.me:1123/api"
@@ -11,11 +17,5 @@ def send_request(username, password, user_request):
     response = requests.post(url, data=data)
     
     # Affichage de la réponse du serveur
-    print(response.text)
+    return response.text
 
-if __name__ == '__main__':
-    # Exemple d'utilisation
-    username = "username"
-    password = "password"
-    user_request = "requete"
-    send_request(username, password, user_request)
