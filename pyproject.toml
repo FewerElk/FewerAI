@@ -3,7 +3,7 @@ requires = ["hatchling", "requests"]
 build-backend = "hatchling.build"
 
 [project]
-name = "fewerai_FEWERELk"
+name = "fewerai_FEWERELK"
 version = "0.0.1"
 authors = [
   { name="FewerElk", email="fewerelk@gmail.com" },
@@ -16,6 +16,9 @@ classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fewerai"]
 
 [project.urls]
 Homepage = "https://github.com/FewerElk/FewerAI"
