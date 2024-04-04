@@ -3,7 +3,7 @@ requires = ["hatchling", "requests"]
 build-backend = "hatchling.build"
 
 [project]
-name = "fewerai_FEWERELK"
+name = "fewerai"
 version = "0.0.1"
 authors = [
   { name="FewerElk", email="fewerelk@gmail.com" },
