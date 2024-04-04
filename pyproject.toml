@@ -1,1 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
+[project]
+name = "fewerai_FEWERELk"
+version = "0.0.1"
+authors = [
+  { name="FewerElk", email="fewerelk@gmail.com" },
+]
+description = "A little ai"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD 3-Clause",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/FewerElk/FewerAI"
+Issues = "https://github.com/FewerElk/FewerAI/issues"
