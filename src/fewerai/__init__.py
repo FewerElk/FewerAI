@@ -3,7 +3,7 @@
 
 import requests
 
-class LoginException(Exception):
+class AccessForbiddenException(Exception):
     """Raised when failed to login to the API server."""
     pass
 
@@ -12,7 +12,10 @@ class BadRequestException(Exception):
     pass
 
 class ServiceUnavailableException(Exception):
-    """Raised when the server get an internall exceptio, or when the server is not reachable"""
+    """Raised when the server get an internall exceptio, or when the server is not reachable."""
+
+class AccountBannedException(Exception):
+    """Raised when the provided account is suspended."""
 
 class API(object):
     def __init__(self, username:str, token:str):
@@ -32,7 +35,13 @@ class API(object):
             if response.text == "400":
                 raise BadRequestException("Bad Request. Please update the version of this client or post an issue here : https://github.com/FewerElk/FewerAI/issues")
             elif response.text == "403":
-                raise LoginException("Failed to login: incorrect username or password.")
+                raise AccessForbiddenException("Failed to login: incorrect username or password.")
+            elif response.text == "403-B":
+                try:
+                    raise AccountBannedException("The provided credentials are suspended by the server.")
+                except AccountBannedException as e:
+                    raise AccessForbiddenException("Could not log in to the server.") from e
+
             elif response.text == "503":
                 raise ServiceUnavailableException("An internal exception occured when performing the generation. Maybe the server couldn't decode your request. Did you used utf-8 caracters ?")
             else:
