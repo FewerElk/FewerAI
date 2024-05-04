@@ -83,7 +83,7 @@ class API(object):
     def generate_with_session(self, request:str, sessionID: str) -> str:
         """use a session (=discussion) that use your old message to generate a text."""
         try:
-            data = "{}%{}%{}%{}".format(self.username, self.token, 2, request)
+            data = "{}%{}%{}%{}%{}".format(self.username, self.token, 2, request, sessionID)
 
             # URL de l'API Flask
             url = "http://n1.recloud-hosting.me:1123/api/session"
@@ -106,7 +106,6 @@ class API(object):
             elif response.text == "503":
                 raise ServiceUnavailableException("An internal exception occured when performing the generation. Maybe the server couldn't decode your request. Did you used utf-8 caracters ?")
             else:
-                resp, sessionid = response.text.split("%")
-                return {"sessionid": sessionid, "response": resp}
+                return response.text
         except requests.exceptions.ConnectionError:
             raise ServiceUnavailableException("Could not connect to the server. Please open an issue.")
