@@ -30,7 +30,7 @@ class API(object):
         try:
             data = "{}%{}%{}".format(self.username, self.token, request)
 
-            # URL de l'API Flask
+
             url = "http://n1.recloud-hosting.me:1123/api"
 
             response = requests.post(url, data=data)
@@ -85,7 +85,7 @@ class API(object):
         try:
             data = "{}%{}%{}%{}%{}".format(self.username, self.token, 2, request, sessionID)
 
-            # URL de l'API Flask
+
             url = "http://n1.recloud-hosting.me:1123/api/session"
 
             response = requests.post(url, data=data)
