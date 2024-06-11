@@ -86,7 +86,7 @@ class API(object):
             data = "{}%{}%{}%{}%{}".format(self.username, self.token, 2, request, sessionID)
 
 
-            url = "http://n1.recloud-hosting.me:1123/api/session"
+            url = "http://n1.recloud-hosting.me:1107/api/session"
 
             response = requests.post(url, data=data)
 
